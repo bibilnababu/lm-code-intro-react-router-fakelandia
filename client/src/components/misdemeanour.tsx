@@ -1,4 +1,3 @@
-const Misdemeanour : React.FC = () => <>home
-</>
+const Misdemeanour: React.FC = () => <>home</>;
 
 export default Misdemeanour;

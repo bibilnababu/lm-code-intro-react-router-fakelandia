@@ -1,4 +1,3 @@
-const Confession : React.FC = () => <>
-confession</>
+const Confession: React.FC = () => <>confession</>;
 
 export default Confession;
