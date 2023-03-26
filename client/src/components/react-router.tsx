@@ -8,9 +8,10 @@ const ReactRouter: React.FC = () => (
   <>
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/confession" element={<Confession />} />
       <Route path="/misdemeanour" element={<Misdemeanour />} />
-      <Route path='*' element={<NotFound/>}/>
+      <Route path="/confession" element={<Confession />} />
+
+      <Route path="*" element={<NotFound />} />
     </Routes>
   </>
 );

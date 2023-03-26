@@ -3,13 +3,19 @@ import { NavLink } from "react-router-dom";
 const Nav = () => (
   <ul>
     <li>
-      <NavLink to="/">home</NavLink>
+      <NavLink to="/">Home</NavLink>
     </li>
     <li>
-      <NavLink to="/confession">confession</NavLink>
+      {/* added style object to navlink compoenent using isActive property */}
+      <NavLink
+        to="/misdemeanour"
+        style={({ isActive }) => (isActive ? { color: "red" } : {})}
+      >
+        Misdemeanour
+      </NavLink>
     </li>
     <li>
-      <NavLink to="/misdeanour">misdemeanour</NavLink>
+      <NavLink to="/confession">Confess To Us</NavLink>
     </li>
   </ul>
 );
