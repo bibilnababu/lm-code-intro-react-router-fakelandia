@@ -1,28 +1,26 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from "react";
+import { Misdemeanour as MisdemeanourType } from "../misdemeanours.types";
 
-const Misdemeanour = () => {
- 
-  const [misdemeanours, setMisdemeanours] = useState([]);
-
+const Misdemeanour: React.FC = () => {
+  const [misdemeanours, setMisdemeanours] = useState<MisdemeanourType[]>([]);
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('http://localhost:8080/api/misdemeanours/100');
-      const data = await response.json();
-      setMisdemeanours(data);
+      const response = await fetch("http://localhost:8080/api/misdemeanours/3");
+      const data = (await response.json()) as { misdemeanours:MisdemeanourType[]};
+      console.log(data);
+      setMisdemeanours(data.misdemeanours);
+  
     };
 
     fetchData();
-  }, [setMisdemeanours]);
-
-  
+  }, []);
   
 
   return (
     <div>
-     
       <h1>Misdemeanours</h1>
       <label htmlFor="filter">Filter by:</label>
-      
+
       <table>
         <thead>
           <tr>
@@ -32,12 +30,26 @@ const Misdemeanour = () => {
             <th>Punishment Idea</th>
           </tr>
         </thead>
-        
+        <tbody>
+         
+        {misdemeanours.map((misdemeanour, index) => (
+            <tr key={index}>
+              <td>{misdemeanour.citizenId}</td>
+              <td>{misdemeanour.date}</td>
+              <td>{misdemeanour.misdemeanour}</td>
+              <td>
+                <img
+                  src={`https://picsum.photos/200/200?random=${index}`}
+                  alt="punishment idea"
+                />
+              </td>
+            </tr>
+          ))}
+          
+          </tbody>
       </table>
     </div>
   );
 };
 
-
 export default Misdemeanour;
-
