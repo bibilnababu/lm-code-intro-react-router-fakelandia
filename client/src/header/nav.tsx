@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 
 const Nav = () => (
   <ul>
+    <h3> FAKELANDIA JUSTICE DEPARTEMENT</h3>
     <li>
       <NavLink to="/">Home</NavLink>
     </li>

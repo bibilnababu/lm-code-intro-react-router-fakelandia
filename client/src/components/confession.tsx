@@ -27,6 +27,33 @@ const Confession = () => {
   const handleSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
   };
+  function submitForm() {
+    // Define the form data to be submitted
+    const formData = {
+      subject: subject,
+      reason: reason,
+      details: details
+    };
+  
+    // Send the form data to the server
+    fetch(`${"http://localhost:8080/api/misdemeanours"}/api/confess`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+      .then(response => response.json())
+      .then(data => {
+        // Handle the response from the server
+        console.log(data);
+      })
+      .catch(error => {
+        // Handle any errors that occur during the request
+        console.error(error);
+      });
+  }
+  
 
   return (
     <>
