@@ -6,20 +6,20 @@ const Misdemeanour: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch("http://localhost:8080/api/misdemeanours/3");
-      const data = (await response.json()) as { misdemeanours:MisdemeanourType[]};
+      const data = (await response.json()) as {
+        misdemeanours: MisdemeanourType[];
+      };
       console.log(data);
       setMisdemeanours(data.misdemeanours);
-  
     };
 
     fetchData();
   }, []);
-  
 
   return (
     <div>
       <h1>Misdemeanours</h1>
-      <label htmlFor="filter">Filter by:</label>
+      {/* <label htmlFor="filter">Filter by:</label> */}
 
       <table>
         <thead>
@@ -31,8 +31,7 @@ const Misdemeanour: React.FC = () => {
           </tr>
         </thead>
         <tbody>
-         
-        {misdemeanours.map((misdemeanour, index) => (
+          {misdemeanours.map((misdemeanour, index) => (
             <tr key={index}>
               <td>{misdemeanour.citizenId}</td>
               <td>{misdemeanour.date}</td>
@@ -45,8 +44,7 @@ const Misdemeanour: React.FC = () => {
               </td>
             </tr>
           ))}
-          
-          </tbody>
+        </tbody>
       </table>
     </div>
   );
